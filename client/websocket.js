@@ -1,12 +1,17 @@
-// 1. Username Logic (with LocalStorage)
-let storedName = sessionStorage.getItem('collaborative_username');
+let storedName = sessionStorage.getItem("collaborative_username");
 
 if (!storedName) {
-    storedName = prompt("Enter your name:") || "Guest";
-    sessionStorage.setItem('collaborative_username', storedName);
+    let input = prompt("Enter your name:");
+    if (input && input.trim() !== "") {
+        storedName = input.trim();
+    } else {
+        storedName = "Guest-" + Math.floor(Math.random() * 1000);
+    }
+    sessionStorage.setItem("collaborative_username", storedName);
 }
 
 const username = storedName;
+
 
 // Getting the status bar element
 const statusEl = document.getElementById('status-bar');
