@@ -46,7 +46,7 @@ A multi-user drawing application allowing simultaneous collaboration on a shared
 
 - **Vector Storage:** Drawing data is stored as arrays of coordinate points (Vectors) rather than pixel data. This allows for clean "Undo" operations without quality loss.
 - **Global State:** The Server acts as the "Single Source of Truth." Clients render strictly based on the server's history stack.
-- **Smooth Curves:** Used `quadraticCurveTo` logic in the canvas API to prevent jagged lines during fast mouse movement.
+- **Smooth lines sequence:** ctx.lineTo(...);
 
 ## 🐛 Known Limitations
 
