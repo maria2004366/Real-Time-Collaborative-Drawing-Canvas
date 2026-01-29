@@ -17,17 +17,29 @@ The system follows a **“Thin Client, Fat Server”** model:
 
 ```mermaid
 graph TD
-      ClientA["Client A (Browser)"] --> Server["Node.js Server"]
-      ClientB["Client B (Browser)"] --> Server
 
-      subgraph ServerLogic["Server Logic"]
-          Server --> History["Global History Stack"]
-          Server --> Redo["Redo Stack"]
-          Server --> Updates["State Updates"]
-      end
+    subgraph Clients["Clients (Thin Layer)"]
+        ClientA["Client A (Browser)"]
+        ClientB["Client B (Browser)"]
+    end
 
-      Updates --> ClientA
-      Updates --> ClientB
+    subgraph ServerSide["Server (Fat Layer / Source of Truth)"]
+        Server["Node.js Server"]
+        History["Global History Stack"]
+        Redo["Redo Stack"]
+        Updates["State Updates"]
+    end
+
+    ClientA -->|Emit Events| Server
+    ClientB -->|Emit Events| Server
+
+    Server -->|Maintain| History
+    Server -->|Maintain| Redo
+    Server -->|Generate| Updates
+
+    Updates -->|Sync State| ClientA
+    Updates -->|Sync State| ClientB
+
 ```
 
 ---
