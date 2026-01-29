@@ -1,10 +1,9 @@
 // 1. Username Logic (with LocalStorage)
-let storedName = localStorage.getItem('collaborative_username');
+let storedName = sessionStorage.getItem('collaborative_username');
 
 if (!storedName) {
     storedName = prompt("Enter your name:") || "Guest";
-    // Save it for next time
-    localStorage.setItem('collaborative_username', storedName);
+    sessionStorage.setItem('collaborative_username', storedName);
 }
 
 const username = storedName;
