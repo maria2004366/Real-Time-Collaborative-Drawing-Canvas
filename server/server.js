@@ -12,9 +12,8 @@ app.use(express.static(path.join(__dirname, "../client")));
 // --- STATE MANAGEMENT ---
 let drawingHistory = [];
 let redoStack = []; 
-let users = {}; // Stores { socketId: { name, color } }
+let users = {}; 
 
-// Helper: Generate a random bright color
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -27,50 +26,45 @@ function getRandomColor() {
 io.on("connection", (socket) => {
     console.log("New Connection: " + socket.id);
 
-    // 1. Handle New User (Assign Color)
     socket.on('new-user', (name) => {
-        users[socket.id] = {
-            name: name,
-            color: getRandomColor() // Assign unique color
-        };
-        // Send history to the new guy
+        users[socket.id] = { name: name, color: getRandomColor() };
+        // Initial load still needs full history
         socket.emit('initial-history', drawingHistory);
     });
 
-    // 2. Cursor Movement
     socket.on('cursor-move', (coords) => {
         const user = users[socket.id];
         if (user) {
             socket.broadcast.emit('cursor-move', {
                 id: socket.id,
-                x: coords.x,
-                y: coords.y,
-                name: user.name, // Send the real name
-                color: user.color // Send the assigned color
+                x: coords.x, y: coords.y,
+                name: user.name, color: user.color
             });
         }
     });
 
-    // 3. Drawing - Live (Movement)
     socket.on("drawing-live", (data) => {
         socket.broadcast.emit("drawing-live", data);
     });
 
-    // 4. Drawing - Save (Mouse Up)
     socket.on("drawing-save", (finishedStroke) => {
-        // [IMPROVEMENT] Attach User ID so we know who drew this
+        // Tag with UserID
         finishedStroke.userId = socket.id;
+        // Ensure it has an ID (if client didn't send one)
+        if (!finishedStroke.id) finishedStroke.id = Math.random().toString(36);
 
         drawingHistory.push(finishedStroke);
-        redoStack = []; // Clear redo stack on new action
-        // No broadcast needed here, users already saw live drawing
+        redoStack = []; 
+        
+        // Broadcast ONLY the new stroke to everyone else (Delta Update)
+        // This saves bandwidth compared to sending the whole history
+        socket.broadcast.emit('new-stroke', finishedStroke);
     });
 
-    // 5. UNDO (USER-SPECIFIC)
+    // --- OPTIMIZED UNDO ---
     socket.on('undo', () => {
         let indexToRemove = -1;
-
-        // Iterate backwards to find the last stroke by THIS user
+        // Find last stroke by this user
         for (let i = drawingHistory.length - 1; i >= 0; i--) {
             if (drawingHistory[i].userId === socket.id) {
                 indexToRemove = i;
@@ -79,32 +73,32 @@ io.on("connection", (socket) => {
         }
 
         if (indexToRemove !== -1) {
-            // Remove that specific stroke
             const removedStroke = drawingHistory.splice(indexToRemove, 1)[0];
             redoStack.push(removedStroke);
             
-            // Broadcast the NEW history to everyone
-            io.emit('history-update', drawingHistory);
+            // DELTA UPDATE: Don't send the whole history.
+            // Just tell clients: "Delete ID #xyz"
+            io.emit('delete-stroke', removedStroke.id);
         }
     });
 
-    // 6. REDO
+    // --- OPTIMIZED REDO ---
     socket.on('redo', () => {
         if (redoStack.length > 0) {
             const strokeToRestore = redoStack.pop();
             drawingHistory.push(strokeToRestore);
-            io.emit('history-update', drawingHistory);
+            // Just send the one new stroke
+            io.emit('new-stroke', strokeToRestore);
         }
     });
 
-    // 7. CLEAR
     socket.on('clear', () => {
         drawingHistory = [];
         redoStack = [];
-        io.emit('history-update', drawingHistory);
+        // Clear is a rare event, simple signal is fine
+        io.emit('clear-canvas');
     });
 
-    // 8. Disconnect
     socket.on("disconnect", () => {
         delete users[socket.id];
         io.emit('user-disconnected', socket.id);
